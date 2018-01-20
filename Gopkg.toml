@@ -1,0 +1,4 @@
+
+[[constraint]]
+  name = "github.com/minio/minio-go"
+  branch = "master"

@@ -1,0 +1,9 @@
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+vendor
+_vendor-*
+coverage.html
+coverage.json
+goconvey.out
+.DS_Store
