@@ -50,7 +50,7 @@ func put(minioClient *minio.Client) {
 	n, err := minioClient.PutObject("mybucket", "myobject", file, fileStat.Size(), minio.PutObjectOptions{
 		ContentType: "application/octet-stream",
 		UserMetadata: map[string]string{
-			"bob": "helloworld",
+			"hhhhhh": "helloworld",
 		},
 	})
 	if err != nil {
@@ -78,6 +78,15 @@ func list(minioClient *minio.Client, do func(minio.ObjectInfo)) {
 	}
 }
 
+func statobject(minioClient *minio.Client) {
+	i, err := minioClient.StatObject("mybucket", "myobject", minio.StatObjectOptions{})
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("stat %+v\n", i)
+}
+
 func main() {
 	endpoint := "127.0.0.1:9000"
 	accessKeyID := "secretaccesskey"
@@ -95,4 +104,5 @@ func main() {
 	list(minioClient, func(object minio.ObjectInfo) {
 		fmt.Printf("%+v\n", object)
 	})
+	statobject(minioClient)
 }
